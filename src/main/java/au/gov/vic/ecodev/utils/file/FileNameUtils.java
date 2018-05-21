@@ -5,15 +5,16 @@ import java.util.ResourceBundle;
 
 import org.apache.commons.lang3.StringUtils;
 
+import au.gov.vic.ecodev.utils.file.helper.SystemHelper;
+
 public enum FileNameUtils {
 
 	INSTANCE;
 	
-	private static final String FILE_NAME_UTILS_BUNDLE = "FileNameUtilsBundle";
 	private static final String FILE_NAME_UTILS_METHOD_NAME = "file.name.utils.method.name";
 	private static final String FILE_NAME_UTILS_CLASS_NAME = "file.name.utils.class.name";
 
-	public final boolean isPartialFileName(String fileName) throws Exception {
+	public final boolean isPatternMatchedFileName(String fileName) throws Exception {
 		if (StringUtils.isNotBlank(fileName)) {
 			String className = BUNDLE.getString(FILE_NAME_UTILS_CLASS_NAME);
 			String methodName = BUNDLE.getString(FILE_NAME_UTILS_METHOD_NAME);
@@ -25,6 +26,6 @@ public enum FileNameUtils {
 		return false;
 	}
 	
-	private static final ResourceBundle BUNDLE = ResourceBundle.getBundle(FILE_NAME_UTILS_BUNDLE);
+	private static final ResourceBundle BUNDLE = new SystemHelper().getBundle();
 
 }

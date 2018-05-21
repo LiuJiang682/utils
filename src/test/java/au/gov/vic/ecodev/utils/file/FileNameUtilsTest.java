@@ -13,7 +13,7 @@ public class FileNameUtilsTest {
 		//Given
 		String fileName = "mrt_eco123_partial.txt";
 		//When
-		boolean flag = FileNameUtils.INSTANCE.isPartialFileName(fileName);
+		boolean flag = FileNameUtils.INSTANCE.isPatternMatchedFileName(fileName);
 		//Then
 		assertThat(flag, is(true));
 	}
@@ -23,7 +23,7 @@ public class FileNameUtilsTest {
 		//Given
 		String fileName = "mrt_eco123_parti.txt";
 		//When
-		boolean flag = FileNameUtils.INSTANCE.isPartialFileName(fileName);
+		boolean flag = FileNameUtils.INSTANCE.isPatternMatchedFileName(fileName);
 		//Then
 		assertThat(flag, is(false));
 	}
