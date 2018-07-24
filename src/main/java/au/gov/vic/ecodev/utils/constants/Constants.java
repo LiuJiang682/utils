@@ -17,7 +17,9 @@ public interface Constants {
 	}
 	
 	interface Numeral {
+		static final int NEGATIVE_ONE = -1;
 		static final int ZERO = 0;
 		static final int ONE = 1;
+		static final int INVALID_COLUMN_COUNT = NEGATIVE_ONE;
 	}
 }
