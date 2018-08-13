@@ -20,10 +20,11 @@ public class ListSizeValidator {
 			count = headers.size();
 		}
 		
-		if (Numeral.INVALID_COLUMN_COUNT == count) {
-			String message = "No column header has been passing down";
-			messages.add(message);
-		}
+		//Remove this due to user request.
+		// if (Numeral.INVALID_COLUMN_COUNT == count) {
+		// String message = "No column header has been passing down";
+		// messages.add(message);
+		// }
 		return count;
 	}
 
