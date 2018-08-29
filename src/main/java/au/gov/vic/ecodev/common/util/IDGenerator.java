@@ -39,4 +39,7 @@ public class IDGenerator {
 		return new BigDecimal(sb.toString());
 	}
 
+	public static long getUIDAsAbsLongValue() {
+		return Math.abs(getUID().longValue());
+	}
 }
