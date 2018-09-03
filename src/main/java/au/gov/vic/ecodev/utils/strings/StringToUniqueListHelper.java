@@ -18,6 +18,7 @@ public class StringToUniqueListHelper {
 		}
 		String[] templateArray = templates.split(Strings.COMMA);
 		String[] distinctTemplates = Arrays.stream(templateArray)
+				.map(String::toUpperCase)
 				.distinct()
 				.toArray(String[]::new);
 		return Arrays.asList(distinctTemplates);

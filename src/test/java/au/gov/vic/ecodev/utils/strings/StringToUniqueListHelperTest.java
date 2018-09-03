@@ -24,6 +24,18 @@ public class StringToUniqueListHelperTest {
 		assertThat(templateList.get(0), is(equalTo("MRT")));
 	}
 	
+	@Test
+	public void shouldExtractUniqueTemplateIgnoreCase() {
+		//Given
+		String templates = "MRT,mrt";
+		//When
+		List<String> templateList = StringToUniqueListHelper.extractUniqueTemplate(templates);
+		//Then
+		assertThat(templateList, is(notNullValue()));
+		assertThat(templateList.size(), is(equalTo(1)));
+		assertThat(templateList.get(0), is(equalTo("MRT")));
+	}
+	
 	@Test(expected = IllegalArgumentException.class)
 	public void shouldRaiseExceptionWhenCalledExtractUniqueTemplateWithNullTemplates() {
 		//Given
