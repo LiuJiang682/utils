@@ -166,4 +166,64 @@ public class DbTableNameSqlInjectionFilterTest {
 		//Then
 		assertThat(flag, is(false));
 	}
+	
+	@Test
+	public void shouldReturnFalseWhenRestrictedSqlTagIsPrintableCharacterStar() {
+		//Given
+		String tableName = "select ID, TEMPLATE from SESSION_HEADER WHERE REJECTED = ?";
+		//When
+		boolean flag = DbTableNameSqlInjectionFilter.foundRestrictedSqlInjectedSqlTag(tableName);
+		//Then
+		assertThat(flag, is(false));
+	}
+	
+	@Test
+	public void shouldReturnFalseWhenRestrictedSqlTagIsPrintableCharacterWithUnderLineCommaFullStop() {
+		//Given
+		String tableName = "abc_def,ghi_jkl,FILE_NAME";
+		//When
+		boolean flag = DbTableNameSqlInjectionFilter.foundRestrictedSqlInjectedSqlTag(tableName);
+		//Then
+		assertThat(flag, is(false));
+	}
+	
+	@Test
+	public void shouldReturnFalseWhenRestrictedSqlTagIsPrintableCharacterWithUnderLineComma() {
+		//Given
+		String tableName = "abc_def,ghi_jkl";
+		//When
+		boolean flag = DbTableNameSqlInjectionFilter.foundRestrictedSqlInjectedSqlTag(tableName);
+		//Then
+		assertThat(flag, is(false));
+	}
+	
+	@Test
+	public void shouldReturnFalseWhenRestrictedSqlTagIsPrintableCharacterWithUnderLine() {
+		//Given
+		String tableName = "abc_def";
+		//When
+		boolean flag = DbTableNameSqlInjectionFilter.foundRestrictedSqlInjectedSqlTag(tableName);
+		//Then
+		assertThat(flag, is(false));
+	}
+	
+	@Test
+	public void shouldReturnFalseWhenRestrictedSqlTagIsPrintableCharacter() {
+		//Given
+		String tableName = "abc";
+		//When
+		boolean flag = DbTableNameSqlInjectionFilter.foundRestrictedSqlInjectedSqlTag(tableName);
+		//Then
+		assertThat(flag, is(false));
+	}
+	
+	@Test
+	public void shouldReturnFalseWhenRestrictedSqlTagIsNull() {
+		//Given
+		String tableName = null;
+		//When
+		boolean flag = DbTableNameSqlInjectionFilter.foundRestrictedSqlInjectedSqlTag(tableName);
+		//Then
+		assertThat(flag, is(false));
+	}
 }
